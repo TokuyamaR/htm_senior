@@ -1,0 +1,262 @@
+// ==============================
+// sassの使い方
+// ==============================
+// sass（サス）は「プリプロセッサー」や「メタ言語」とも呼ばれる
+// 書き方は{}を使わないsass記法と普通のcssと同じ{}を使うscss記法の２種類
+// 他にも「Less（レス）」なんてものも一時流行ったがあまり使われず
+// https://webukatu.com/wordpress/blog/1633
+
+// ==============================
+// sassのメリット
+// ==============================
+// 1.コンポーネントごとにまとめられるので保守性が上がる
+// 2.いちいち同じセレクタを書かなくていいので開発速度が上がる
+// 3.見やすくてバグが発生しにくい
+
+// ==============================
+// sassの特徴
+// ==============================
+// 1.ネスト（入れ子構造）で書く
+// 2.変数が使える
+// 3.関数のようなmixinというものが使える
+// 4.インポートが使える
+//   @import “./mixins.scss”
+// 他にも下記サイトのように色々な機能があるが、上記だけ覚えておけばOK
+// https://cartman0.hatenablog.com/entry/2015/07/17/060125
+
+// ==============================
+// sassの使い方
+// ==============================
+// 1.拡張子はscss
+// 2.cssへコンパイルする必要があるので、コンパイル用のライブラリを入れる（色々ある）
+// 3.コンパイルしてcssをhtmlでいつもと同じ様に読み込むだけ
+
+// ==============================
+// 変数(個人やチームでの実装の統一性を持たせるために最初に定義しておく
+// ==============================
+
+$font-color_default: #777;
+$font-color_date: #e37b89; // Todo:リファクタ
+$color_corp: #e3a8b1;
+$font-color_sub1: #b6a489;
+
+$site-width: 980px;
+
+$font-size_s: 12px;
+$font-size_m: 14 pz;
+$font-size_default: 16 pz;
+$font-size_l: 18 pz;
+$font-size_xl: 24 pz;
+$font-size_xxl: 30 pz;
+$font-size_3l: 38 pz;
+
+$space_s: 5px;
+$space_m: 10px;
+$space_l: 15px;
+$space_xl: 20px;
+$space_xxl: 30px;
+$space_3l: 40px;
+
+$font-family_corp: 'Amatic SC', cursive;
+
+// メディアクエリのブレークポイント設定
+// のちに設定するので今は飛ばす
+
+// マップ型変数を使うと便利
+$breakpoints: (
+        'sm': 'screen and (max-width: 414px)',
+        'md': 'screen and (max-width: 768px)',
+        'lg': 'screen and (max-width: 1000px)',
+        'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+// ==============================
+// mixin
+// ==============================
+// @mixinは、cssで関数のような物を作れる
+// https://www.webcreatorbox.com/tech/sass-mixin
+// map-get()の第一引数に変数名、第二引数にマップ型のキーを渡すとマップ型の値が返る
+// #{}は「インターポーレーション」といって、演算できないまたは変数が使えない箇所でも可能にする。calcなどでよく使用される
+// http://book.scss.jp/code/c4/08.html
+
+@mixin mq($breakpoint: sm) {
+  @media #{map-get($breakpoints, $breakpoint)}{
+    @content;
+  }
+}
+
+// ==============================
+// base
+// ==============================
+html, body {
+  width: 100%;
+  color: $font-color_default;
+  font-size: $font-size_default;
+  line-height: 1.6;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; // TODO:リファクタ必要（変数にする）
+  text-size-adjust: 100%;
+  letter-spacing: 0.1em;
+}
+
+p, a {
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: $font-color_default;
+  text-decoration: none;
+  transition: .3s;
+}
+
+a:hover {
+  color: $color_corp;
+  transition: .3s;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+// =============================
+// header
+// =============================
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80px;
+  color: $font-color_default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: $space_xl;
+  padding-right: $space_xl;
+  position: fixed;
+  transition: .3s;
+  z-index: 2;
+  &.float-active {
+    transition: .3s;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  @include mq() {
+    height: 60px;
+    padding-right: $space_l;
+    padding-left: $space_l;
+  }
+  .title {
+    font-size: $font-size_xxl;
+    font-family: $font-family_corp;
+    font-weight: bold;
+  }
+}
+
+// =============================
+// menu
+// =============================
+@include mq() { // Todo:リファクタ必要（PCで修正が入ることを想定して、includeはクラスの中に記載する)
+  .nav-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    background: rgba(255, 255, 255, .85);
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    transition: .5s;
+    &.active {
+      transition: .5s;
+      transform: translateX(-100%);
+      z-index: 2;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  font-size: $font-size_xl;
+  font-family: $font-family_corp;
+  &-item {
+    margin-right: $space-xl;
+  }
+  &-link {
+    -webkit-font-smoothing: initial;
+  }
+  @include mq() {
+    display: block;
+    font-size: $font-size-xxl;
+    &-item {
+      margin-right: initial;
+    }
+    &-link {
+      -webkit-font-smoothing: initial;
+      display: block;
+      padding: $space_l;
+      text-align: center;
+    }
+  }
+}
+
+// https://www.nxworld.net/tips/12-css-hamburger-menu-active-effect.html
+// ハンバーガーメニュー
+.menu-trigger {
+  display: none;
+  @include mq() {
+    display: inline-block;
+  }
+  transition: all .4s;
+  box-sizing: border-box;
+  position: relative;
+  width: 40px;
+  height: 32px;
+  z-index: 3;
+  span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: $font-color_default;
+    border-radius: 4px;
+    &:nth-of-type(1) {
+      top: 0;
+    }
+    &:nth-of-type(2) {
+      top: 14px;
+    }
+    &:nth-of-type(3) {
+      bottom: 0;
+    }
+  }
+  &.active span {
+    &:nth-of-type(1) {
+      transform: translateY(12px) rotate(-45deg)
+    }
+    &:nth-of-type(2) {
+      opacity: 0;
+    }
+    &:nth-of-type(3) {
+      transform: translateY(-15px) rotate(45deg)
+    }
+  }
+}
+
+// ==================================
+// hero
+// ==================================
+.hero {
+  background-image: url('../images/hero.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
