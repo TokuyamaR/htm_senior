@@ -2,7 +2,7 @@
 html, body {
   width: 100%;
   color: #777;
-  font-size: 16 pz;
+  font-size: 16px;
   line-height: 1.6;
   font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   text-size-adjust: 100%;
@@ -51,7 +51,7 @@ img {
       padding-right: 15px;
       padding-left: 15px; } }
   .header .title {
-    font-size: 30 pz;
+    font-size: 30px;
     font-family: "Amatic SC", cursive;
     font-weight: bold; }
 
@@ -90,7 +90,7 @@ img {
 .menu {
   display: flex;
   align-items: center;
-  font-size: 24 pz;
+  font-size: 24px;
   font-family: "Amatic SC", cursive; }
   .menu-item {
     margin-right: 20px; }
@@ -99,7 +99,7 @@ img {
   @media screen and (max-width: 414px) {
     .menu {
       display: block;
-      font-size: 30 pz; }
+      font-size: 30px; }
       .menu-item {
         margin-right: initial; }
       .menu-link {
@@ -110,7 +110,7 @@ img {
   @media screen and (max-width: 768px) {
     .menu {
       display: block;
-      font-size: 30 pz; }
+      font-size: 30px; }
       .menu-item {
         margin-right: initial; }
       .menu-link {
@@ -203,7 +203,7 @@ img {
   .container-title {
     font-family: "Amatic SC", cursive;
     text-align: center;
-    font-size: 38 pz;
+    font-size: 38px;
     margin-bottom: 40px; }
     @media screen and (max-width: 414px) {
       .container-title {
@@ -223,7 +223,7 @@ img {
     .container-body {
       padding-left: 15px;
       padding-right: 15px; } }
-  .container-ornament .container-title-span {
+  .container-ornament .container-title span {
     display: inline-block;
     background: #fff;
     padding: 0 10px;
@@ -245,7 +245,7 @@ img {
 .news {
   width: 70%;
   height: 60px;
-  overflow: scroll;
+  overflow-y: scroll;
   margin: 0 auto;
   border-radius: 5px;
   background: #f8f7fc;
@@ -259,7 +259,7 @@ img {
     -webkit-font-smoothing: initial;
     margin-right: 10px; }
   .news-title {
-    font-size: 14 pz; }
+    font-size: 14px; }
 
 .panel {
   box-sizing: border-box;
@@ -357,7 +357,7 @@ img {
   border-radius: 4px;
   outline: none;
   height: 60px;
-  font-size: 18 pz;
+  font-size: 18px;
   color: #777;
   box-sizing: border-box; }
   .input-l {
@@ -393,7 +393,7 @@ img {
   .btn-l {
     padding: 15px 30px;
     width: 100%;
-    font-size: 18 pz; }
+    font-size: 18px; }
 
 .footer {
   background: #555;
@@ -407,7 +407,7 @@ img {
       font-size: 12px; } }
   @media screen and (max-width: 768px) {
     .footer {
-      font-size: 14 pz; } }
+      font-size: 14px; } }
 
 .bgColor {
   background: #f8f7fc;
@@ -421,4 +421,4 @@ img {
   font-family: "Amatic SC", cursive; }
 
 .ft-l {
-  font-size: 24 pz; }
+  font-size: 24px; }

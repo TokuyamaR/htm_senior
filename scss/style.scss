@@ -44,12 +44,12 @@ $background-color_default: #f8f7fc;
 $site-width: 980px;
 
 $font-size_s: 12px;
-$font-size_m: 14 pz;
-$font-size_default: 16 pz;
-$font-size_l: 18 pz;
-$font-size_xl: 24 pz;
-$font-size_xxl: 30 pz;
-$font-size_3l: 38 pz;
+$font-size_m: 14px;
+$font-size_default: 16px;
+$font-size_l: 18px;
+$font-size_xl: 24px;
+$font-size_xxl: 30px;
+$font-size_3l: 38px;
 
 $space_s: 5px;
 $space_m: 10px;
@@ -373,7 +373,7 @@ img {
   }
   &-ornament {
     .container-title {
-      &-span { //Todo: リファクタ必要(span以外を使うことも考えてclass名で指定すること)->Done
+      span { //Todo: リファクタ必要(span以外を使うことも考えてclass名で指定すること)->Done
         display: inline-block;
         background: #fff;
         padding: 0 10px;
@@ -403,12 +403,12 @@ img {
 }
 
 // ==================================
-// container
+// news
 // ==================================
 .news {
   width: 70%;
   height: 60px;
-  overflow: scroll;
+  overflow-y: scroll;
   margin: 0 auto;
   border-radius: 5px;
   background: $background-color_default; //Todo:リファクタ必要(複数箇所で使いまわしているため、変数にまとめる)->Done
