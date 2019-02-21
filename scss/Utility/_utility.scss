@@ -1,0 +1,20 @@
+// ==================================
+// Utility
+// ==================================
+.bgColor { //Todo:リファクタ必要(後々色修正が入った場合に対処できるように修正)->Done
+  background: #f8f7fc;
+  box-shadow: 0 0 8px 2px #ddd inset;
+}
+
+.mb-xxl {
+  margin-bottom: $space_xxl;
+}
+
+.ft-corp {
+  font-weight: bold;
+  font-family: $font-family_corp;
+}
+
+.ft-l {
+  font-size: $font-size_xl;
+}
